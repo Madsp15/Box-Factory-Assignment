@@ -33,4 +33,8 @@ public class Service
     {
         return _repository.GetBoxById(boxId);
     }
+    public IEnumerable<Box> SearchForBoxByName(string query)
+    {
+        return _repository.SearchForBoxByName(query);
+    }
 }

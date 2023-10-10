@@ -46,10 +46,13 @@ public class Repository
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
-            return conn.Execute(sql, new { id = boxId }) == 1;
+            return conn.Execute(sql, new
+            {
+                id = boxId
+            }) == 1;
         }
     }
-    
+
     public IEnumerable<Box> GetAllBoxes()
     {
         var sql = $@"SELECT *, inventory_count as InventoryCount FROM tables.boxes;";
@@ -87,15 +90,15 @@ public class Repository
         }
     }
 
-    public IEnumerable<Box> SearchForBox(string query)
+    public IEnumerable<Box> SearchForBoxByName(string query)
     {
-        var sql = $@"SELECT * FROM tables.boxes 
-                        WHERE LOWER(name) LIKE '%' || @query || '%'
-                        ORDER BY id;";
+        var sql = @"SELECT * FROM tables.boxes 
+                WHERE LOWER(name) LIKE '%' || @query || '%'
+                ORDER BY id;";
 
         using (var conn = DataConnection.DataSource.OpenConnection())
         {
-            return conn.Query<Box>(sql, new { query });
+            return conn.Query<Box>(sql, new { query = "%" + query.ToLower() + "%" });
         }
     }
 }
