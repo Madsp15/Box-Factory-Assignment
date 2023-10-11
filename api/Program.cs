@@ -6,6 +6,9 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddSingleton<Repository>();
 builder.Services.AddSingleton<Service>();
+builder.Services.AddSingleton<LoginRepository>();
+builder.Services.AddSingleton<LoginService>();
+builder.Services.AddSingleton<AuthenticationHelper>();
 builder.Services.AddControllers();
 
 // Add services to the container.
