@@ -1,7 +1,8 @@
-import {Component} from "@angular/core";
+import { Component } from '@angular/core';
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {HttpClient} from "@angular/common/http";
 import {firstValueFrom} from "rxjs";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginPage{
 
   async login(){
     const call = this.http.post('http://localhost:5054/api/boxes/login', this.formGroup.value);
-    const result = await firstValueFrom<boolean>(call);
+    //const result = await firstValueFrom<boolean>(call);
 
     if(!call){
 

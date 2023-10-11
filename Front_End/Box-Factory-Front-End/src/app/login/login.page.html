@@ -22,12 +22,10 @@
         </ion-item>
 
         <!-- Login Button -->
-        <ion-button expand="full" (click)="login()">Login</ion-button>
+        <ion-button [disabled]="formGroup.invalid" expand="full" (click)="login()">Login</ion-button>
 
         <!-- Register Link -->
-        <ion-text class="ion-text-center">
-          <a (click)="navigateToRegister()">Register New User</a>
-        </ion-text>
+        <ion-button expand="full" (click)="navigateToRegister()">Register</ion-button>
       </ion-col>
     </ion-row>
   </ion-grid>
