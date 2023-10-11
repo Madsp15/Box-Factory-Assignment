@@ -1,6 +1,22 @@
-<ion-alert
-        trigger="present-alert"
-        header="Create Box Menu"
-        [buttons]="alertButtons"
-        [inputs]="alertInputs"
-></ion-alert>
+<h2>Create Box</h2>
+  <form>
+    <label for="material">Material:</label>
+    <input type="text" id="material" [formControl]="materialInput">
+    <label for="width">Width:</label>
+    <input type="text" id="width" [formControl]="widthInput">
+    <label for="length">Length:</label>
+    <input type="text" id="length" [formControl]="lengthInput">
+    <label for="height">Height:</label>
+    <input type="text" id="height" [formControl]="heightInput">
+    <label for="volume">Volume:</label>
+    <input type="text" id="volume" [formControl]="volumeInput">
+    <label for="price">Price:</label>
+    <input type="text" id="price" [formControl]="priceInput">
+    <label for="inventory">Inventory:</label>
+    <input type="text" id="inventory" [formControl]="inventoryInput">
+    <button (click)="createBox()">Save</button>
+  </form>
+
+
+
+

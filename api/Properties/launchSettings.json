@@ -16,8 +16,8 @@
       "launchUrl": "swagger",
       "applicationUrl": "http://localhost:5054",
       "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "pgconn": "postgres://mrtfocdw:p90JE0wzhR6VnzlbboHfdCy7alQTX0tC@tai.db.elephantsql.com/mrtfocdw"
     },
     "https": {
       "commandName": "Project",
@@ -38,4 +38,5 @@
       }
     }
   }
+}
 }

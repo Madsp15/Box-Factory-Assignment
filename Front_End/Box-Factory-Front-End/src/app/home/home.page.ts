@@ -3,6 +3,8 @@ import {HttpClient} from "@angular/common/http";
 import {BoxService} from "../boxservice";
 import {firstValueFrom, Subject} from "rxjs";
 import {Router} from "@angular/router";
+import {ModalController, PopoverController} from "@ionic/angular";
+import {CreateBoxComponent} from "../create-box/create-box.component";
 
 
 
@@ -18,8 +20,11 @@ export class HomePage {
   private searchTerms = new Subject<string>();
 
 
-  constructor(private http: HttpClient, public service: BoxService, private router: Router) {
-    this.getData();
+
+  constructor(private http: HttpClient, public service: BoxService, private router: Router, public popup: ModalController) {
+
+      this.getData();
+
   }
 
 
@@ -38,8 +43,10 @@ export class HomePage {
     }
   }
 
-  clickCreateBox() {
-    this.router.navigate(["home/create-box"])
+  async clickCreateBox() {
+    //this.router.navigate(["home/create-box"])
+    const popover = await this.popup.create({component: CreateBoxComponent})
+    popover.present();
   }
 
 }
