@@ -4,6 +4,9 @@ import {BoxService} from "../boxservice";
 import {firstValueFrom} from "rxjs";
 import {Router} from "@angular/router";
 
+
+
+
 @Component({
   selector: 'app-home',
   templateUrl: 'home.page.html',
@@ -11,8 +14,9 @@ import {Router} from "@angular/router";
 })
 export class HomePage {
 
+
   constructor(private http: HttpClient, public service: BoxService, private router: Router) {
-      this.getData();
+    this.getData();
   }
 
   async getData() {
@@ -24,7 +28,14 @@ export class HomePage {
   clickCreateBox() {
     this.router.navigate(["home/create-box"])
   }
+
+  async onSearch() {
+    const call = this.http.get<Box[]>('http://localhost:5054/api/inventory');
+    const result = await firstValueFrom<Box[]>(call);
+    this.service.boxes = result
+  }
 }
+
 
 export interface Box{
   id: number,
@@ -35,4 +46,5 @@ export interface Box{
   material: string,
   inventoryCount: number,
   price: number
+  name: string;
 }

@@ -50,8 +50,7 @@ public class BoxController : ControllerBase
     }
     [Route("/api/inventory/search")]
     [HttpGet]
-    public IEnumerable<Box> SearchForBoxes([FromQuery] string query)
-    {
+    public IEnumerable<Box> SearchForBoxes([FromQuery] string query) { 
         return _service.SearchForBoxByName(query);
     }
 
